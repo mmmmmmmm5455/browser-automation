@@ -1,5 +1,5 @@
 # README.md
-
+(I try to use Openclaw on Coze mainland version to make it LOL)
 # 🤖 智能浏览器自动化工具
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
