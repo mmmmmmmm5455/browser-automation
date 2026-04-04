@@ -1,5 +1,5 @@
 # README.md
-(I try to use Openclaw on Coze mainland version to make it LOL)
+(I try to use Openclaw on Coze mainland version to make it LOL, first try on errrr vibe coding without brain)
 # 🤖 智能浏览器自动化工具
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
@@ -217,12 +217,6 @@ automation.run(task)
 - [x] 添加示例和教程
 - [x] 进行安全审查
 
-## 🤝 社区与支持
-
-- 📖 [Discord](https://discord.gg/c/5HJKNY7uWb) - 讨论、分享和帮助
-- [GitHub](https://github.com/your-username/browser-automation) - 问题反馈和建议
-- [Issues](https://github.com/your-username/browser-automation/issues) Bug 报告
-- [Wiki](https://github.com/your-username/browser-automation/wiki) - 文档
 
 ## 📜 路线信息
 
@@ -230,15 +224,6 @@ automation.run(task)
 - **文档：** https://your-username.github.io/browser-automation
 - **Releases:** https://github.com/your-username/browser-automation/releases
 - **License:** MIT License
-
----
-
-## 🤝 作者
-
-[你的 GitHub 用户名]
-- **邮箱：** your email
-- **主页：** https://your-github-page-url
-- **Twitter/X：** [@your_handle]
 
 ---
 
