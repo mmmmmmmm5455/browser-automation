@@ -1,0 +1,90 @@
+# Docker Compose 文件
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+      target: ./app
+      ports:
+        - "8000:8000"
+      environment:
+        - OPENAI_API_KEY: ${OPENAI_API_KEY}
+        - ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+        - OPENAI_ORG_ID: org-your-company
+        - OPENAI_PROJECT_ID: proj-your-project
+        - OPENAI_TEMP_ID: temp
+        - OPENAI_FILES: true
+        - OPENAI_FILES_PATH: /app/.cache/openai_files
+      volumes:
+        - browser_data:
+            driver: local
+            src: ./screenshots
+        - data:
+            driver: local
+            src: ./data
+        - logs:
+            driver: local
+            src: ./logs
+      environment:
+        - PYTHONUNBUFFERED: 1
+        - PLAYWRIGHT_BROWS: 4
+        - PLAYWRIGHT_NO_SANDB:
+        - STARTUP_TIMEOUT: 100
+      restart: unless-stopped
+      env_file: .env
+    nginx:
+    image: nginx:1.27
+    ports:
+      - "80:80"
+    volumes:
+      - nginx_html: nginx:/usr/share/nginx/html:ro
+        - nginx_config: nginx:/etc/nginx/nginx.conf:ro
+        - nginx_logs: nginx:/var/log/nginx/:ro
+      depends_on:
+        - app
+    command: ["nginx", "nginx", "-c", "nginx.conf"]
+    networks:
+      - browser-automation:
+          name: browser-automation
+          external: true
+      - nginx:
+          name: nginx
+          external: true
+          driver: bridge
+          ipam:
+            browser-automation: {}
+            nginx: {}
+          nginx:
+            target_port: 80
+            target_url: http://nginx:80
+    volumes:
+      - browser-automation-data:
+          browser-automation:
+            driver: local
+            src: ./screenshots
+          nginx:
+            driver: local
+            src: ./screenshots
+          nginx:
+            driver: local
+            src: ./screenshots
+      - browser-automation-logs:
+          browser-automation:
+            driver: local
+            src: ./logs
+          nginx:
+            driver: local
+            src: ./logs
+          nginx:
+            driver: local
+            src: ./logs
+
+volumes:
+  browser-automation-data:
+    driver: local
+    src: ./screenshots
+  browser-automation-logs:
+    driver: local
+    src: ./logs

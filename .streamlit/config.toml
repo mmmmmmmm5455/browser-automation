@@ -1,0 +1,10 @@
+[theme]
+primaryColor="#e535ab"
+backgroundColor="#0e1117"
+secondaryBackgroundColor="#240046"
+textColor="#ffffff"
+font="sans serif"
+serverAddress="localhost:8501"
+
+[client]
+showErrorDetails=true
